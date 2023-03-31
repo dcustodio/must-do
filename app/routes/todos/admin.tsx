@@ -21,7 +21,7 @@ export default function TodoAdmin() {
               <li key={todo.id}>
                 <Link
                   to={todo.id}
-                  className="text-blue-600 underline"
+                  className={`text-blue-600 ${ todo.isCompleted ? 'line-through' : 'underline'}`}
                 >
                   {todo.title}
                 </Link>

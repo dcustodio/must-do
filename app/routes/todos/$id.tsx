@@ -21,6 +21,7 @@ export default function TodoId() {
         <h1 className="my-6 border-b-2 text-center text-3xl">
           {todo.title}
         </h1>
+        <a href={`/todos/admin/${todo.id}`} >edit</a>
       </main>
     );
   }

@@ -11,4 +11,17 @@ export async function getTodo(id: string) {
 
 export async function createTodo(todo: Pick<Todo, "title">) {
     return prisma.todo.create({ data: todo });
-  }
+}
+
+export async function updateTodo(todo: Pick<Todo, "title" | "id" | "isCompleted">) {
+
+    const { id, isCompleted, title } = todo;
+
+    return prisma.todo.update({ where: {
+        id
+    }, data: {
+        isCompleted,
+        title
+    } });
+}
+
