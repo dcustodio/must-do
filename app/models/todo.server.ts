@@ -1,11 +1,5 @@
 import { prisma } from "~/db.server";
-
-type Todo = {
-    id: string;
-    title: string;
-    isCompleted: boolean;
-}
-
+import type { Todo } from "@prisma/client";
 
 export async function getTodos(): Promise<Array<Todo>> { 
     return prisma.todo.findMany()
@@ -15,4 +9,6 @@ export async function getTodo(id: string) {
     return prisma.todo.findUnique({ where: { id }});
 }
 
-
+export async function createTodo(todo: Pick<Todo, "title">) {
+    return prisma.todo.create({ data: todo });
+  }
